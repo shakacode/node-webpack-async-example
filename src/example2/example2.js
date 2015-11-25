@@ -1,5 +1,5 @@
 import fs from 'fs'; // import node module
-import sleep from 'sleep'; // import standard package.json module
+import { sleep } from 'sleep'; // import standard package.json module
 
 /**
  * Convert fs.readdir to return a promise.
