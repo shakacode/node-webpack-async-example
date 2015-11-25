@@ -12,7 +12,7 @@ function readDirAsync(path) {
     fs.readdir(path, (err, data) => {
       if (err !== null) return reject(err);
       console.log('shhh...napping for 3 seconds!');
-      sleep(3);
+      sleep.sleep(3);
       resolve(data);
     });
   });

@@ -7,7 +7,6 @@ fs.readdirSync('node_modules')
     return ['.bin'].indexOf(modules) === -1;
   })
   .forEach(function addToCommonJS(mod) {
-    //nodeModules[mod] =  mod;
     nodeModules[mod] = 'commonjs ' + mod;
   });
 
@@ -49,6 +48,9 @@ module.exports = {
         test: /\.jsx$|\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
+        query: {
+          presets: ['es2015'],
+        },
       },
     ],
   },
