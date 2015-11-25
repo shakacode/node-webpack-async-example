@@ -7,7 +7,6 @@ fs.readdirSync('node_modules')
     return ['.bin'].indexOf(modules) === -1;
   })
   .forEach(function addToCommonJS(mod) {
-    //nodeModules[mod] =  mod;
     nodeModules[mod] = 'commonjs ' + mod;
   });
 

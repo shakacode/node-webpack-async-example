@@ -1,5 +1,8 @@
 # Simple example of setting up node with webpack.
 
+## Demonstrates:
+1. Using externals to for node libraries
+2. Using babel to use ES6/ES7
 
 ## Start webpack
 
@@ -26,4 +29,3 @@ node dist/example1.bundle.js
 ```
 node dist/example2.bundle.js
 ```
-
