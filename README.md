@@ -3,6 +3,19 @@
 ## Demonstrates:
 1. Using externals to for node libraries
 2. Using babel to use ES6/ES7
+3. Use of ES7 async/await
+4. Converting nodebacks to promises
+
+
+## Install
+
+Assuming you're using nvm...We built this with node 5.0.
+
+```
+nvm use
+npm i
+```
+
 
 ## Start webpack
 
@@ -16,7 +29,6 @@ npm run watch
 scripts/lint
 ```
 
-
 ## Try It
 
 ### Very simple example with async/await:
@@ -24,8 +36,12 @@ scripts/lint
 node dist/example1.bundle.js
 ```
 
-
 ### Example with a node and external package being called:
+Prints directory contents
 ```
 node dist/example2.bundle.js
+node dist/example2.bundle.js ~
 ```
+
+## References
+* [Backend Apps with Webpack (Part I)](http://jlongster.com/Backend-Apps-with-Webpack--Part-I)
