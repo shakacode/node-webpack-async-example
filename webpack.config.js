@@ -3,12 +3,12 @@ const fs = require('fs');
 
 const nodeModules = {};
 fs.readdirSync('node_modules')
-  .filter(function parseModules(modules) {
-    return ['.bin'].indexOf(modules) === -1;
-  })
-  .forEach(function addToCommonJS(mod) {
-    nodeModules[mod] = 'commonjs ' + mod;
-  });
+    .filter(function parseModules(modules) {
+      return ['.bin'].indexOf(modules) === -1;
+    })
+    .forEach(function addToCommonJS(mod) {
+      nodeModules[mod] = 'commonjs ' + mod;
+    });
 
 const commonEntryPoints = ['babel-polyfill'];
 
@@ -21,35 +21,27 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
   },
-
   target: 'node',
   output: {
     filename: '[name]-bundle.js',
     path: './dist',
     libraryTarget: 'this',
   },
+  node: {
+    __dirname: true,
+    __filename: true,
+  },
   externals: nodeModules,
+  devTool: '#eval-source-map',
+  debug: true,
   module: {
-
-    // We'll use a npm taks for eslint and jsrc
-    preLoaders: [
-      {
-        test: /\.jsx$|\.js$/,
-        loader: 'eslint-loader',
-        include: __dirname,
-        exclude: [
-          /main\.js$/,
-          /node_modules/,
-        ],
-      },
-    ],
     loaders: [
       {
         test: /\.jsx$|\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
         query: {
-          presets: ['es2015'],
+          presets: ['es2015', 'stage-0'],
         },
       },
     ],
