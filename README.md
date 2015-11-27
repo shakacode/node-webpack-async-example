@@ -16,13 +16,13 @@ nvm use
 npm i
 ```
 
+## Build with Babel
 
-## Start webpack
+This copies puts the files in `/lib`
 
 ```
-npm run watch
+scripts/build
 ```
-
 
 ## Lint
 ```
@@ -33,14 +33,19 @@ scripts/lint
 
 ### Very simple example with async/await:
 ```
-node dist/example1.bundle.js
+node lib/example1/example1.js
 ```
 
 ### Example with a node and external package being called:
+
 Prints directory contents
 ```
-node dist/example2.bundle.js
-node dist/example2.bundle.js ~
+node lib/example2/example2.js
+```
+
+Or your home directory
+```
+node lib/example2/example2.js ~
 ```
 
 ## References
@@ -57,3 +62,27 @@ Then to run the example with the debugger:
 ```
 node-debug dist/example1-bundle.js
 ```
+
+
+# Alternate Webpack Instructions
+## Start webpack
+
+```
+npm run watch
+```
+## Try It
+
+### Very simple example with async/await:
+```
+node dist/example1.bundle.js
+```
+
+### Example with a node and external package being called:
+Prints directory contents
+```
+node dist/example2.bundle.js
+node dist/example2.bundle.js ~
+```
+
+## References
+* [Backend Apps with Webpack (Part I)](http://jlongster.com/Backend-Apps-with-Webpack--Part-I)
