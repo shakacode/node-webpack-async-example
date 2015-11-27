@@ -45,3 +45,15 @@ node dist/example2.bundle.js ~
 
 ## References
 * [Backend Apps with Webpack (Part I)](http://jlongster.com/Backend-Apps-with-Webpack--Part-I)
+
+## Debugger
+
+```
+npm i -g node-inspector
+npm i -g babel-node-debug
+```
+
+Then to run the example with the debugger:
+```
+node-debug dist/example1-bundle.js
+```

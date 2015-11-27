@@ -1,14 +1,7 @@
-// webpack config file
+const escapeStringRegExp = require('escape-string-regexp');
+const project = require('./package.json');
+const webpack = require('webpack');
 const fs = require('fs');
-
-const nodeModules = {};
-fs.readdirSync('node_modules')
-  .filter(function parseModules(modules) {
-    return ['.bin'].indexOf(modules) === -1;
-  })
-  .forEach(function addToCommonJS(mod) {
-    nodeModules[mod] = 'commonjs ' + mod;
-  });
 
 const commonEntryPoints = ['babel-polyfill'];
 
@@ -26,21 +19,32 @@ module.exports = {
   output: {
     filename: '[name]-bundle.js',
     path: './dist',
-    libraryTarget: 'this',
+    libraryTarget: 'commonjs',
   },
-  externals: nodeModules,
+  externals: (
+    Object
+      .keys(project.dependencies)
+      .map(module => new RegExp(`^${escapeStringRegExp(module)}(?:\/.*)?$`))
+  ),
+
+  devtool: '#sourcemap',
+
+  plugins: [
+    new webpack.BannerPlugin(
+      'require("source-map-support").install();',
+      { raw: true, entryOnly: false }
+    ),
+  ],
+
   module: {
 
     // We'll use a npm taks for eslint and jsrc
     preLoaders: [
       {
-        test: /\.jsx$|\.js$/,
+        test: /\.jsx?$/,
         loader: 'eslint-loader',
         include: __dirname,
-        exclude: [
-          /main\.js$/,
-          /node_modules/,
-        ],
+        exclude: [ /node_modules/ ],
       },
     ],
     loaders: [

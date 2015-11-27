@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.2.0",
+    "escape-string-regexp": "^1.0.3",
     "sleep": "^3.0.0"
   }
 }
