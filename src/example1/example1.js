@@ -1,4 +1,4 @@
-require('babel-polyfill');
+require('babel/polyfill');
 
 function longFn(param) {
   return new Promise((res, rej) => {
